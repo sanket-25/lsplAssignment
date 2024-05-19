@@ -1,7 +1,8 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
-const authMiddleware = require('./middleware/authMiddleware'); // Correct import
+const cors = require('cors');
+const authMiddleware = require('./middleware/authMiddleware');
 
 const app = express();
 
@@ -10,6 +11,7 @@ connectDB();
 
 // Init Middleware
 app.use(bodyParser.json());
+app.use(cors());
 
 // Define Routes
 app.use('/api/auth', require('./routes/authRoutes'));
