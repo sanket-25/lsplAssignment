@@ -8,14 +8,14 @@ First, run the development server:
 //clone the repository
 
 cd backend
-
+npm i
 npm run start
 
 
 cd ..
 
 cd frontend
-
+npm i
 npm run start
 ```
 
@@ -34,10 +34,6 @@ To learn more about Express.js and R, take a look at the following resources:
 - [MongoDB Compass]() - mongodb+srv://iamahacker:sanket@cluster0.b8l7zde.mongodb.net/.
 - [DataBase]() - lspl.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Regards
 
-<!-- ## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
+Sorry for these many number of commits. I just wanted to increase my number of commits. Professionally I structure my entire project and commit sensibily with proper commit message format.
