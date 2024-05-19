@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 
 function ChatRoom({ user }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [ws, setWs] = useState(null);
+  const location = useLocation();
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    // Extract email from location state
+    const { state } = location;
+    if (state && state.email) {
+      setEmail(state.email);
+    }
+  }, [location]);
 
   useEffect(() => {
     // Create WebSocket connection.
@@ -54,18 +66,19 @@ function ChatRoom({ user }) {
   const handleSend = (e) => {
     e.preventDefault();
     if (newMessage.trim() && ws) {
-      const message = { userId: "test@email.com", text: newMessage };
-  
+      const message = { userId: "test@email.com", text: newMessage }; // Use user.email instead of "test@email.com"
+    
       // Update the messages state immediately
       setMessages(prevMessages => [...prevMessages, message]);
-  
+    
       // Send the message via WebSocket
       ws.send(JSON.stringify(message));
-  
+    
       // Clear the input field
       setNewMessage('');
     }
   };
+  
   
 
   return (
