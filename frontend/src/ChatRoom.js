@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import DOMPurify from 'dompurify';
 // import './chat.css'; 
 
 function ChatRoom({ user, setUser }) {
@@ -88,39 +89,39 @@ function ChatRoom({ user, setUser }) {
 
   return (
     <div className="flex flex-col h-screen">
-      <header className="flex justify-between items-center p-4 bg-blue-500 text-white">
-        <h1 className="text-xl">Chat Room</h1>
-        <button onClick={handleLogout} className="bg-red-500 px-4 py-2 rounded">
-          Logout
-        </button>
-      </header>
-      <div id="chat-window" className="flex-grow overflow-auto p-4 bg-gray-100">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`mb-2 p-2 max-w-xs rounded-lg ${
-              message.userId === email ? 'bg-blue-500 text-white self-end' : 'bg-white border'
-            }`}
-            style={{ alignSelf: message.userId === email ? 'flex-end' : 'flex-start' }}
-          >
-            <div className="font-bold">{message.userId}</div>
-            <div>{message.text}</div>
-          </div>
-        ))}
-      </div>
-      <form className="flex p-4 bg-white border-t" onSubmit={handleSend}>
-        <input
-          type="text"
-          className="flex-grow px-4 py-2 border rounded"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          placeholder="Type your message here..."
-        />
-        <button type="submit" className="ml-4 px-4 py-2 bg-blue-500 text-white rounded">
-          Send
-        </button>
-      </form>
+    <header className="flex justify-between items-center p-4 bg-blue-500 text-white">
+      <h1 className="text-xl">Chat Room</h1>
+      <button onClick={handleLogout} className="bg-red-500 px-4 py-2 rounded">
+        Logout
+      </button>
+    </header>
+    <div id="chat-window" className="flex-grow overflow-auto p-4 bg-gray-100">
+      {messages.map((message, index) => (
+        <div
+          key={index}
+          className={`mb-2 p-2 max-w-xs rounded-lg ${
+            message.userId === email ? 'bg-blue-500 text-white self-end' : 'bg-white border'
+          }`}
+          style={{ alignSelf: message.userId === email ? 'flex-end' : 'flex-start' }}
+        >
+          <div className="font-bold">{message.userId}</div>
+          <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(message.text) }} />
+        </div>
+      ))}
     </div>
+    <form className="flex p-4 bg-white border-t" onSubmit={handleSend}>
+      <input
+        type="text"
+        className="flex-grow px-4 py-2 border rounded"
+        value={newMessage}
+        onChange={(e) => setNewMessage(e.target.value)}
+        placeholder="Type your message here..."
+      />
+      <button type="submit" className="ml-4 px-4 py-2 bg-blue-500 text-white rounded">
+        Send
+      </button>
+    </form>
+  </div>
   );
 }
 
