@@ -1,14 +1,46 @@
-// src/ChatRoom.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function ChatRoom() {
+function ChatRoom({ user }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const [ws, setWs] = useState(null);
+
+  useEffect(() => {
+    // Create WebSocket connection.
+    const socket = new WebSocket('ws://localhost:5000');
+
+    // Connection opened
+    socket.onopen = () => {
+      console.log('Connected to WebSocket server');
+      setWs(socket);
+    };
+
+    // Listen for messages
+    socket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      if (message.type === 'history') {
+        setMessages(message.data);
+      } else {
+        setMessages((prevMessages) => [...prevMessages, message]);
+      }
+    };
+
+    // Connection closed
+    socket.onclose = () => {
+      console.log('Disconnected from WebSocket server');
+    };
+
+    // Clean up WebSocket connection when component unmounts
+    return () => {
+      socket.close();
+    };
+  }, []);
 
   const handleSend = (e) => {
     e.preventDefault();
-    if (newMessage.trim()) {
-      setMessages([...messages, { text: newMessage, user: 'User' }]);
+    if (newMessage.trim() && ws) {
+      const message = { userId: user.email, text: newMessage };
+      ws.send(JSON.stringify(message));
       setNewMessage('');
     }
   };
@@ -18,7 +50,7 @@ function ChatRoom() {
       <div className="flex-grow overflow-auto p-4 bg-gray-100">
         {messages.map((message, index) => (
           <div key={index} className="mb-2">
-            <div className="font-bold">{message.user}</div>
+            <div className="font-bold">{message.userId}</div>
             <div>{message.text}</div>
           </div>
         ))}
