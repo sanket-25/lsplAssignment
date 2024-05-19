@@ -1,4 +1,3 @@
-// src/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +10,7 @@ function Login({ setUser }) {
     e.preventDefault();
     // For now, just set a dummy user object and redirect
     setUser({ email });
-    navigate('/chat');
+    navigate('/chat', { state: { email } }); // Pass email as state
   };
 
   return (
