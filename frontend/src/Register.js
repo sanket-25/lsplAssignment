@@ -43,7 +43,7 @@ function Register({ setUser }) {
 
             navigate('/chat');
         } catch (err) {
-            setError('Try Again, internal server error or user may already exist');
+            setError('User already exists with this email');
         }
     };
 
