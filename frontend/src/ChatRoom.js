@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+// import './chat.css'; 
 
-
-function ChatRoom({ user }) {
+function ChatRoom({ user, setUser }) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [ws, setWs] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
 
   useEffect(() => {
@@ -66,7 +67,7 @@ function ChatRoom({ user }) {
   const handleSend = (e) => {
     e.preventDefault();
     if (newMessage.trim() && ws) {
-      const message = { userId: "test@email.com", text: newMessage }; // Use user.email instead of "test@email.com"
+      const message = { userId: user.email, text: newMessage }; // Use user.email instead of "test@email.com"
     
       // Update the messages state immediately
       setMessages(prevMessages => [...prevMessages, message]);
@@ -79,13 +80,29 @@ function ChatRoom({ user }) {
     }
   };
   
-  
+  const handleLogout = () => {
+    // Clear user data and navigate to login page
+    setUser(null);
+    navigate('/login');
+  };
 
   return (
     <div className="flex flex-col h-screen">
+      <header className="flex justify-between items-center p-4 bg-blue-500 text-white">
+        <h1 className="text-xl">Chat Room</h1>
+        <button onClick={handleLogout} className="bg-red-500 px-4 py-2 rounded">
+          Logout
+        </button>
+      </header>
       <div id="chat-window" className="flex-grow overflow-auto p-4 bg-gray-100">
         {messages.map((message, index) => (
-          <div key={index} className="mb-2">
+          <div
+            key={index}
+            className={`mb-2 p-2 max-w-xs rounded-lg ${
+              message.userId === email ? 'bg-blue-500 text-white self-end' : 'bg-white border'
+            }`}
+            style={{ alignSelf: message.userId === email ? 'flex-end' : 'flex-start' }}
+          >
             <div className="font-bold">{message.userId}</div>
             <div>{message.text}</div>
           </div>
