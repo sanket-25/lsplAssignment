@@ -1,4 +1,4 @@
-This is a [Express.js and React.js](https://expressjs.com/).
+This is a [Express.js and React.js](https://expressjs.com/) Project.
 
 ## Getting Started
 
@@ -21,11 +21,18 @@ npm run start
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000](http://localhost:3000).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+TEST USERS
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+email: test0@email.com
+password: test0
+
+email: test1@email.com
+password: test1
+
+email: test2@email.com
+password: test2
 
 ## Credentials
 
