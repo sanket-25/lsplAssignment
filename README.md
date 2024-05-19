@@ -23,7 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000](http://localhost:3000).
 
-### TEST USERS
+### DEMO/TEST USERS CREDENTIALS
 
 
 email: test0@email.com
@@ -40,7 +40,7 @@ email: test2@email.com
 
 password: test2
 
-## Credentials
+## DATABASE
 
 To learn more about Express.js and R, take a look at the following resources:
 
@@ -49,7 +49,7 @@ To learn more about Express.js and R, take a look at the following resources:
 
 ## Contact
 
-Please feel free to call me even at 3 am if problem while running the project or any improvements required.
+Please feel free to call me even at 3 am if problem while set up and running the project or any improvements required.
 
 Phone: +91 9619132050
 
