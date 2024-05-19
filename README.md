@@ -29,11 +29,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 email: test0@email.com
 
 password: test0
-
+-----------------------------------------------------------------------------------
 email: test1@email.com
 
 password: test1
-
+-----------------------------------------------------------------------------------
 email: test2@email.com
 
 password: test2
@@ -43,7 +43,7 @@ password: test2
 To learn more about Express.js and R, take a look at the following resources:
 
 - [MongoDB Compass]() - mongodb+srv://iamahacker:sanket@cluster0.b8l7zde.mongodb.net/.
-- [DataBase]() - lspl.
+- [DataBase Name]() - lspl.
 
 ## Contact
 
