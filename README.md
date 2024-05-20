@@ -12,7 +12,7 @@ npm i
 npm run start
 
 
-cd ..
+//new terminal
 
 cd frontend
 npm i
