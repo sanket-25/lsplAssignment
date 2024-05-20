@@ -21,7 +21,7 @@ npm run start
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000](http://localhost:3000).
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:5000](http://localhost:5000).
 
 ### DEMO/TEST USERS CREDENTIALS
 
@@ -41,8 +41,6 @@ email: test2@email.com
 password: test2
 
 ## DATABASE
-
-To learn more about Express.js and R, take a look at the following resources:
 
 - [MongoDB Compass]() - mongodb+srv://iamahacker:sanket@cluster0.b8l7zde.mongodb.net/.
 - [DataBase Name]() - lspl.
